@@ -1,0 +1,12 @@
+body {
+    font-family: 'Fira Sans', sans-serif;
+  }
+
+.weather-dashboard {
+  flex-direction: center;
+  background: linear-gradient(to right, rgb(76, 76, 231), rgb(8, 2, 61));
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
