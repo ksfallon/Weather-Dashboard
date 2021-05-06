@@ -15,15 +15,7 @@ function handleCitySearchSubmit(event) {
   console.log('city;', searchInputVal);
 
   localStorage.setItem('city', searchInputVal);
-
-  // don't I need to append as buttons though?
-// also this is only going to give what is searched -
-// NEED TO APPEND FROM LOCAL STORAGE probably using a for loop
-// and put this somewhere else, right when page opens
-  var node = document.createElement('li');
-  var textnode = document.createTextNode(searchInputVal);
-  node.appendChild(textnode);
-  document.querySelector('.search-history').appendChild(node);
+  localStorage.setItem(searchInputVal, searchInputVal);
 
 
   var geocodeQueryUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInputVal},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5`;
@@ -49,3 +41,22 @@ searchButton.addEventListener('click', handleCitySearchSubmit);
 // use coordinate results for next API which is the openweather One Call.
 // MAKE LINES 8 & 9 a function so it can be called later on.
 // Do something with results - local storage, screen display.
+
+
+  // don't I need to append as buttons though?
+// also this is only going to give what is searched -
+// NEED TO APPEND FROM LOCAL STORAGE probably using a for loop
+// and put this somewhere else, right when page opens
+var node = document.createElement('li');
+var textnode = document.createTextNode(searchInputVal);
+node.appendChild(textnode);
+document.querySelector('.search-history').appendChild(node);
+
+
+// I will have a place holder for the city name which will be plugged in
+// and on the same line will be the date with moment JS moment().format('l'); 
+// place for:
+// Temp: pull correct data from local storage
+// Wind: pull correct data from local storage
+// Humidity: pull correct data from local storage
+// UV Index: it needs to change color based on the index number
