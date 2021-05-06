@@ -1,5 +1,6 @@
 body {
     font-family: 'Fira Sans', sans-serif;
+    color: black;
   }
 
 .weather-dashboard {
@@ -9,4 +10,9 @@ body {
   font-weight: bold;
   text-align: center;
   padding: 20px;
+}
+
+/* what is overriding this font?! */
+.text-body {
+  font-family: 'Fira Sans', sans-serif;
 }
