@@ -22,7 +22,8 @@ function handleCitySearchSubmit(event) {
     document.getElementsByClassName("search-history").appendChild(node);
 
 }
-
+// click addEventListener for the button - 
+    // save value in box to a variable
 searchButton.addEventListener("click", handleCitySearchSubmit);
 
 
