@@ -22,17 +22,22 @@
   <h1 class="weather-dashboard">Weather Dashboard</h1>
 </head>
 <body>
-      <!-- <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </div>
-      
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select> --> 
+  <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
+    <div class="col-12 col-md-3 bg-light p-3">
+      <h1 class="text-primary">Search for a City:</h1>
+      <form id="search-form" class="mb-2">
+        <input id="search-input" class="form-input w-100" type="text" placeholder="San Diego">
+        <button class="btn btn-info btn-block">Search</button>
+      </form>
+
+      <!-- <a href="./index.html" class="btn btn-block btn-danger">&larr; Go back.</a> -->
+    </div>
+
+    <div class="col-12 col-md-9 p-3 text-light">
+      <!-- <h2>Showing results for <span id="result-text"></span></h2>
+      <div id="result-content"></div> -->
+    </div>
+  </div> 
 
 </body>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
