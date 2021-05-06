@@ -2,20 +2,28 @@
 // fetch localstorage city names, and display to website.
 // box for user to put in the city HTML
 // button for them to click to search HTML
-var searchFormE1 = document.querySelector("#search-form")
+var searchFormE1 = document.querySelector("#search-form");
+var searchButton = document.querySelector("#search-button");
+var cityInput = document.querySelector('#search-input')
+var searchCityList = document.querySelector(".search-history");
 
-function handleSearchFormSubmit(event) {
+function handleCitySearchSubmit(event) {
     event.preventDefault();
 
-    var searchInputVal = document.querySelector('#search-input').value;
-    console.log("city", searchInputVal);
+    var searchInputVal = cityInput.value;
+    console.log("city;", searchInputVal);
 
     localstorage.setItem("city", searchInputVal);
     
+    // don't I need to append as buttons though?
+    var node = document.createElement("li");
+    var textnode = document.createTextNode(searchInputVal);
+    node.appendChild(textnode);
+    document.getElementsByClassName("search-history").appendChild(node);
 
 }
 
-searchFormE1.addEventListener("click", handleSearchFormSubmit);
+searchButton.addEventListener("click", handleCitySearchSubmit);
 
 
 // function locationApiSearch(city, state) {
