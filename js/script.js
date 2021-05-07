@@ -50,13 +50,19 @@ function handleCitySearchSubmit(event) {
   //will put the city name in the top right container
     $('#city-name').text(response[0].name);
     var today = moment();
-    $("#today-date").text(today.format("MMM Do, YYYY"));
+    $("#today-date").text(today.format('l'));
     var cityToSearch = response[0];
     var oneCallWeatherApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityToSearch.lat}&lon=${cityToSearch.lon}&appid=af8f9e641174c07751bae2f5bbbc3fb5`;
     $.ajax({ url: oneCallWeatherApi })
     
     .then(function (response) {
       console.log('WEATHER DATA!:', response);
+      var fahrenheit = (response.current.temp - 273.15) * 9/5 + 32
+      console.log("convert to F", fahrenheit)
+      $('#today-temp').text("Temp:" + " " + fahrenheit + "F");
+      $('#today-wind').text("Wind:" + " " + response.current.wind_speed + " " + "MPH");
+      $('#today-humidity').text("Humidity:" + " " + response.current.humidity);
+      $('#today-UV').text("UV Index:" + " " + response.current.uvi);
     });
   });
 }
