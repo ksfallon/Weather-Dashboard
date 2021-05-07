@@ -12,8 +12,9 @@ function displayLocalStorage(city) {
   // var searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
   localStorage.setItem('searchHistory', JSON.stringify(city)); 
   searchHistory.push(city);
+  var displayCitySearch = JSON.parse(localStorage.getItem('searchHistory'));
 
-  $('#previous-search').append.child(searchHistory.value + "<button>")
+  $('#previous-search').apend(displayCitySearch.city + "<button>")
 
 }
 // NEED TO APPEND FROM LOCAL STORAGE probably using a for loop
