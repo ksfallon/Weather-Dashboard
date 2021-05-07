@@ -63,6 +63,19 @@ function handleCitySearchSubmit(event) {
       $('#today-wind').text("Wind:" + " " + response.current.wind_speed + " " + "MPH");
       $('#today-humidity').text("Humidity:" + " " + response.current.humidity);
       $('#today-UV').text("UV Index:" + " " + response.current.uvi);
+
+      // need to make moment code for date
+      var tomorrow = moment().add(1, 'days');
+      $("#1day-date").text(tomorrow.format('l'));
+
+      $('#1day-img').text(response.daily[0].weather[0].icon);
+      
+      var fahrenheit = (response.daily[0].temp.day - 273.15) * 9/5 + 32
+      // maybe a better solution for converting K to F?
+      console.log("convert to F", fahrenheit)
+      $('#1day-temp').text("Temp:" + " " + fahrenheit + "F");
+      $('#1day-wind').text("Wind:" + " " + response.daily[0].wind_speed + " " + "MPH");
+      $('#1day-humidity').text("Humidity:" + " " + response.daily[0].humidity);
     });
   });
 }
