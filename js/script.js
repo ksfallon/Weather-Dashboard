@@ -63,80 +63,64 @@ function handleCitySearchSubmit(event) {
       $.ajax({ url: oneCallWeatherApi })
 
         .then(function (response) {
-          console.log('WEATHER DATA!:', response);
+          // console.log('WEATHER DATA!:', response);
+          var iconCodeToday = response.current.weather[0].icon
+          var iconUrlToday = `https://openweathermap.org/img/w/${iconCodeToday}.png`
+          $('#weather-icon').html(`<img src="${iconUrlToday}" />`);
+
           $('#today-temp').text("Temp:" + " " + response.current.temp + "F");
           $('#today-wind').text("Wind:" + " " + response.current.wind_speed + " " + "MPH");
           $('#today-humidity').text("Humidity:" + " " + response.current.humidity);
+          // UV Index: it needs to change color based on the index number
           $('#today-UV').text("UV Index:" + " " + response.current.uvi);
 
-          // need to make moment code for date
           var tomorrow = moment().add(1, 'days');
           $("#0day-date").text(tomorrow.format('l'));
-          var iconCode = response.daily[0].weather[0].icon
-          var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`
-          console.log('ICON!?!?!?!!? ', iconUrl)
-          $('#0day-icon').html(`<img src="${iconUrl}" />`);
-          // var tomIcon = "http://openweathermap.org/img/wn/" + response.daily[0].weather[0].icon + "@2x.png"
-          // $('#0day-icon').text(tomIcon);
+          var iconCode0 = response.daily[0].weather[0].icon
+          var iconUrl0 = `https://openweathermap.org/img/w/${iconCode0}.png`
+          $('#0day-icon').html(`<img src="${iconUrl0}" />`);
           $('#0day-temp').text("Temp:" + " " + response.daily[0].temp.day + "F");
           $('#0day-wind').text("Wind:" + " " + response.daily[0].wind_speed + " " + "MPH");
           $('#0day-humidity').text("Humidity:" + " " + response.daily[0].humidity);
 
           var twoDaysOut = moment().add(2, 'days');
           $("#1day-date").text(twoDaysOut.format('l'));
-          $('#1day-icon').text(response.daily[1].weather[0].icon);
-          // var twoIcon = "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png"
-          // $('#1day-icon').text(twoIcon);
+          var iconCode1 = response.daily[1].weather[0].icon
+          var iconUrl1 = `https://openweathermap.org/img/w/${iconCode1}.png`
+          $('#1day-icon').html(`<img src="${iconUrl1}" />`);
           $('#1day-temp').text("Temp:" + " " + response.daily[1].temp.day + "F");
           $('#1day-wind').text("Wind:" + " " + response.daily[1].wind_speed + " " + "MPH");
           $('#1day-humidity').text("Humidity:" + " " + response.daily[1].humidity);
 
           var threeDaysOut = moment().add(3, 'days');
           $("#2day-date").text(threeDaysOut.format('l'));
-          $('#2day-img').text(response.daily[2].weather[0].icon);
+          var iconCode2 = response.daily[2].weather[0].icon
+          var iconUrl2 = `https://openweathermap.org/img/w/${iconCode2}.png`
+          $('#2day-icon').html(`<img src="${iconUrl2}" />`);
           $('#2day-temp').text("Temp:" + " " + response.daily[2].temp.day + "F");
           $('#2day-wind').text("Wind:" + " " + response.daily[2].wind_speed + " " + "MPH");
           $('#2day-humidity').text("Humidity:" + " " + response.daily[2].humidity);
 
           var fourDaysOut = moment().add(3, 'days');
           $("#3day-date").text(fourDaysOut.format('l'));
-          $('#3day-img').text(response.daily[3].weather[0].icon);
+          var iconCode3 = response.daily[3].weather[0].icon
+          var iconUrl3 = `https://openweathermap.org/img/w/${iconCode3}.png`
+          $('#3day-icon').html(`<img src="${iconUrl3}" />`);
           $('#3day-temp').text("Temp:" + " " + response.daily[3].temp.day + "F");
           $('#3day-wind').text("Wind:" + " " + response.daily[3].wind_speed + " " + "MPH");
           $('#3day-humidity').text("Humidity:" + " " + response.daily[3].humidity);
 
           var fiveDaysOut = moment().add(4, 'days');
           $("#4day-date").text(fiveDaysOut.format('l'));
-          $('#4day-img').text(response.daily[4].weather[0].icon);
+          var iconCode4 = response.daily[4].weather[0].icon
+          var iconUrl4 = `https://openweathermap.org/img/w/${iconCode4}.png`
+          $('#4day-icon').html(`<img src="${iconUrl4}" />`);
           $('#4day-temp').text("Temp:" + " " + response.daily[4].temp.day + "F");
           $('#4day-wind').text("Wind:" + " " + response.daily[4].wind_speed + " " + "MPH");
           $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity);
         });
     });
   }
-  // click addEventListener for the button -
-  // save value in box to a variable
+
   searchButton.addEventListener('click', handleCitySearchSubmit);
-// click addEventListener for the button -
-// save value in box to a variable
-// fetch API for the GEOLOCATION w/n open weather which gives you the Long and Lat coordinates
-// use coordinate results for next API which is the openweather One Call.
-// MAKE LINES 8 & 9 a function so it can be called later on.
-// Do something with results - local storage, screen display.
 
-
-
-
-
-
-
-
-
-
-// I will have a place holder for the city name which will be plugged in
-// and on the same line will be the date with moment JS moment().format('l'); 
-// place for:
-// Temp: pull correct data from local storage
-// Wind: pull correct data from local storage
-// Humidity: pull correct data from local storage
-// UV Index: it needs to change color based on the index number
