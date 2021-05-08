@@ -17,3 +17,12 @@ body {
   font-family: 'Fira Sans', sans-serif;
 }
 
+.nav {
+  font-size: 25px;
+}
+
+ul{
+  list-style:none;
+  
+}
+

@@ -25,13 +25,21 @@
         <!-- need to create a break line here to separate from previous search buttons -->
       </div>
 
-      <div id="top-right" class="col-8">
-        <h2>
-          <p id="city-name"></p>
-          <span id="today-date"></span>
-          <span id="weather-img"></span>
-        </h2>
-        <ul>
+      <div id="top-right" class="col-8 border border-dark">
+        <ul class="nav font-weight-bold">
+          <li class="nav-item m-1">
+            <a id="city-name"></a>
+          </li>
+
+          <li class="nav-item m-1">
+            <a id="today-date"></a>
+          </li>
+
+          <li class="nav-item m-1">
+            <a id="weather-img"></a>
+          </li>
+        </ul>
+        <ul class= "text-left">
           <li id="today-temp"></li>
           <li id="today-wind"></li>
           <li id="today-humidity"></li>
@@ -54,28 +62,61 @@
       <div id="bottom-right" class="col-8">
         <h2 id = "forecast">5-Day Forecast:</h2>
         <div class="row text-white">
-          <div class="col bg-dark m-3">
+
+          <div class="col bg-dark m-1">
+            <ul>
+              <li id="0day-date"></li>
+              <li id="0day-icon"><img id="wicon" src=""></li> 
+              <li id="0day-temp"></li>
+              <li id="0day-wind"></li>
+              <li id="0day-humidity"></li>
+              
+            </ul>
+          </div>
+
+          <div class="col bg-dark m-1">
             <ul>
               <li id="1day-date"></li>
-              <li id="1day-img"></li> 
+              <li id="1day-icon"><img id="wicon" src=""></li> 
               <li id="1day-temp"></li>
               <li id="1day-wind"></li>
               <li id="1day-humidity"></li>
               
             </ul>
           </div>
-          <div class="col bg-dark m-3">
-          <!-- 2 of 5 -->
+
+          <div class="col bg-dark m-1">
+            <ul>
+              <li id="2day-date"></li>
+              <li id="2day-img"></li> 
+              <li id="2day-temp"></li>
+              <li id="2day-wind"></li>
+              <li id="2day-humidity"></li>
+              
+            </ul>
           </div>
-          <div class="col bg-dark m-3">
-          <!-- 3 of 5 -->
+
+          <div class="col bg-dark m-1">
+            <ul>
+              <li id="3day-date"></li>
+              <li id="3day-img"></li> 
+              <li id="3day-temp"></li>
+              <li id="3day-wind"></li>
+              <li id="3day-humidity"></li>
+              
+            </ul>
           </div>
-          <div class="col bg-dark m-3">
-          <!-- 4 of 5 -->
+
+          <div class="col bg-dark m-1">
+            <ul>
+              <li id="4day-date"></li>
+              <li id="4day-img"></li> 
+              <li id="4day-temp"></li>
+              <li id="4day-wind"></li>
+              <li id="4day-humidity"></li>
+              
+            </ul>
           </div>
-          <div class="col bg-dark m-3">
-          <!-- 5 of 5 -->
-        </div>
 
       </div>
     </div>

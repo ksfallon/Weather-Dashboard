@@ -13,8 +13,9 @@ function displayLocalStorage(city) {
   localStorage.setItem('searchHistory', JSON.stringify(city)); 
   searchHistory.push(city);
   var displayCitySearch = JSON.parse(localStorage.getItem('searchHistory'));
+  console.log("display:", displayCitySearch);
 
-  $('#previous-search').apend(displayCitySearch.city + "<button>")
+  $('#previous-search').appendChild(displayCitySearch.city + "<button>")
 
 }
 // NEED TO APPEND FROM LOCAL STORAGE probably using a for loop
@@ -55,7 +56,7 @@ function handleCitySearchSubmit(event) {
       //will put the city name in the top right container
       $('#city-name').text(response[0].name);
       var today = moment();
-      $("#today-date").text(today.format('l'));
+      $("#today-date").text("(" + today.format('l') + ")");
       var cityToSearch = response[0];
       var oneCallWeatherApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityToSearch.lat}&lon=${cityToSearch.lon}&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
       $.ajax({ url: oneCallWeatherApi })
@@ -69,11 +70,43 @@ function handleCitySearchSubmit(event) {
 
           // need to make moment code for date
           var tomorrow = moment().add(1, 'days');
-          $("#1day-date").text(tomorrow.format('l'));
-          $('#1day-img').text(response.daily[0].weather[0].icon);
-          $('#1day-temp').text("Temp:" + " " + response.daily[0].temp.day + "F");
-          $('#1day-wind').text("Wind:" + " " + response.daily[0].wind_speed + " " + "MPH");
-          $('#1day-humidity').text("Humidity:" + " " + response.daily[0].humidity);
+          $("#0day-date").text(tomorrow.format('l'));
+          $('#0day-icon').text(response.daily[0].weather[0].icon);
+          // var tomIcon = "http://openweathermap.org/img/wn/" + response.daily[0].weather[0].icon + "@2x.png"
+          // $('#0day-icon').text(tomIcon);
+          $('#0day-temp').text("Temp:" + " " + response.daily[0].temp.day + "F");
+          $('#0day-wind').text("Wind:" + " " + response.daily[0].wind_speed + " " + "MPH");
+          $('#0day-humidity').text("Humidity:" + " " + response.daily[0].humidity);
+
+          var twoDaysOut = moment().add(2, 'days');
+          $("#1day-date").text(twoDaysOut.format('l'));
+          $('#1day-icon').text(response.daily[1].weather[0].icon);
+          // var twoIcon = "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png"
+          // $('#1day-icon').text(twoIcon);
+          $('#1day-temp').text("Temp:" + " " + response.daily[1].temp.day + "F");
+          $('#1day-wind').text("Wind:" + " " + response.daily[1].wind_speed + " " + "MPH");
+          $('#1day-humidity').text("Humidity:" + " " + response.daily[1].humidity);
+
+          var threeDaysOut = moment().add(3, 'days');
+          $("#2day-date").text(threeDaysOut.format('l'));
+          $('#2day-img').text(response.daily[2].weather[0].icon);
+          $('#2day-temp').text("Temp:" + " " + response.daily[2].temp.day + "F");
+          $('#2day-wind').text("Wind:" + " " + response.daily[2].wind_speed + " " + "MPH");
+          $('#2day-humidity').text("Humidity:" + " " + response.daily[2].humidity);
+
+          var fourDaysOut = moment().add(3, 'days');
+          $("#3day-date").text(fourDaysOut.format('l'));
+          $('#3day-img').text(response.daily[3].weather[0].icon);
+          $('#3day-temp').text("Temp:" + " " + response.daily[3].temp.day + "F");
+          $('#3day-wind').text("Wind:" + " " + response.daily[3].wind_speed + " " + "MPH");
+          $('#3day-humidity').text("Humidity:" + " " + response.daily[3].humidity);
+
+          var fiveDaysOut = moment().add(4, 'days');
+          $("#4day-date").text(fiveDaysOut.format('l'));
+          $('#4day-img').text(response.daily[4].weather[0].icon);
+          $('#4day-temp').text("Temp:" + " " + response.daily[4].temp.day + "F");
+          $('#4day-wind').text("Wind:" + " " + response.daily[4].wind_speed + " " + "MPH");
+          $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity);
         });
     });
   }
