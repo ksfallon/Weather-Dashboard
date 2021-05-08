@@ -1,7 +1,4 @@
-// Search for the cities on the lefthand side
-// fetch localstorage city names, and display to website.
-// box for user to put in the city HTML
-// button for them to click to search HTML
+
 var searchFormE1 = document.querySelector('#search-form');
 var searchButton = document.querySelector('#search-button');
 var cityInput = document.querySelector('#search-input');
