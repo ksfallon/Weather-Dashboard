@@ -23,6 +23,13 @@ body {
 
 ul{
   list-style:none;
-  
+}
+
+#top-right {
+  visibility: hidden;
+}
+
+#bottom-right {
+  visibility: hidden;
 }
 
