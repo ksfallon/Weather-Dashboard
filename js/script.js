@@ -8,16 +8,23 @@ var cityInput = document.querySelector('#search-input');
 // var searchCityList = document.querySelector('.search-history');
 var searchHistory = ["Chapel Hill"]
 // get the localStorage and set search history to saved array of searches outside of handleCitySearchSubmit function first
-function displayLocalStorage(city) {
-  // var searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-  localStorage.setItem('searchHistory', JSON.stringify(city)); 
-  searchHistory.push(city);
+function displayLocalStorage() {
   var displayCitySearch = JSON.parse(localStorage.getItem('searchHistory'));
-  console.log("display:", displayCitySearch);
 
-  $('#previous-search').appendChild(displayCitySearch.city + "<button>")
+  if (displayCitySearch) {
+    $('#previous-search').empty()
 
+    for (let i = 0; i < displayCitySearch.length; i++) {
+      $('#previous-search').append('<button class="pastSearch">' + displayCitySearch[i] + "</button>")
+    }
+  }
 }
+
+$(document).on('click', '.pastSearch', function() {
+  console.log('clicked past search button')
+})
+
+displayLocalStorage()
 // NEED TO APPEND FROM LOCAL STORAGE probably using a for loop
 
 // var node = document.createElement('li');
@@ -32,18 +39,15 @@ function handleCitySearchSubmit(event) {
   var searchInputVal = cityInput.value;
   // displayLocalStorage(searchInputVal);
   console.log('city:', searchInputVal);
-
-  localStorage.setItem('city', searchInputVal);
-  localStorage.setItem(searchInputVal, searchInputVal);
-
-  searchHistory.push(searchInputVal)
-  localStorage.setItem('searchHistory', JSON.stringify(searchHistory))
+  var localstorageSearches = JSON.parse(localStorage.getItem('searchHistory')) || [];
+ localstorageSearches.push(searchInputVal)
+  localStorage.setItem('searchHistory', JSON.stringify(localstorageSearches))
   // not happy with the parse
   // localStorage.getItem(JSON.parse(searchHistory))
   // console.log (localStorage.getItem(searchHistory))
-  var getSearchHistory = localStorage.getItem("searchHistory")
-  console.log(JSON.parse(getSearchHistory))
-
+  //var getSearchHistory = localStorage.getItem("searchHistory")
+  //console.log(JSON.parse(getSearchHistory))
+  displayLocalStorage()
   // the searchInputVal is the city name that is put into this API
   var geocodeQueryUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInputVal},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
   // the new api with the typed city
@@ -71,7 +75,10 @@ function handleCitySearchSubmit(event) {
           // need to make moment code for date
           var tomorrow = moment().add(1, 'days');
           $("#0day-date").text(tomorrow.format('l'));
-          $('#0day-icon').text(response.daily[0].weather[0].icon);
+          var iconCode = response.daily[0].weather[0].icon
+          var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`
+          console.log('ICON!?!?!?!!? ', iconUrl)
+          $('#0day-icon').html(`<img src="${iconUrl}" />`);
           // var tomIcon = "http://openweathermap.org/img/wn/" + response.daily[0].weather[0].icon + "@2x.png"
           // $('#0day-icon').text(tomIcon);
           $('#0day-temp').text("Temp:" + " " + response.daily[0].temp.day + "F");
