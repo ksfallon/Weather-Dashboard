@@ -25,7 +25,7 @@ $(document).on('click', '.pastSearch', function(event) {
   
   // var needToFigureOut = the name of the city on the button from localStorage
 
-  var geocodeQueryUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${needToFigureOut},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
+  var geocodeQueryUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${needToFigureOut},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
   // the new api with the typed city
   $.ajax({ url: geocodeQueryUrl })
   
@@ -120,7 +120,7 @@ function handleCitySearchSubmit(event) {
  
   displayLocalStorage()
 
-  var geocodeQueryUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInputVal},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
+  var geocodeQueryUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInputVal},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
   // the new api with the typed city
   $.ajax({ url: geocodeQueryUrl })
 
