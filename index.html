@@ -16,9 +16,9 @@
       <div id="top-left" class="col-4">
         <h1 class="text-body">Search for a City:</h1>
 
-        <form id="search-form" class="mb-2">
+        <form id="search-form" name="form" class="mb-2">
 
-          <input id="search-input" class="form-input w-100 mt-2 mb-2" type="text" placeholder="San Diego">
+          <input id="search-input" name="text" class="form-input w-100 mt-2 mb-2" type="text" placeholder="San Diego">
           <button id="search-button" class="btn btn-primary btn-block mt-2 mb-2">Search</button>
 
         </form>
@@ -26,25 +26,14 @@
       </div>
 
       <div id="top-right" class="col-8 border border-dark">
-        <ul class="nav font-weight-bold">
-          <li class="nav-item m-1">
-            <a id="city-name"></a>
-          </li>
+        <div class="nav font-weight-bold"><span id="city-name"  class="mr-2"></span><span id="today-date" class="mr-2"></span><span id="weather-icon"></span></div>
 
-          <li class="nav-item m-1">
-            <a id="today-date"></a>
-          </li>
-
-          <li class="nav-item m-1">
-            <a id="weather-icon"></a>
-          </li>
-        </ul>
-        <ul class= "text-left">
-          <li id="today-temp"></li>
-          <li id="today-wind"></li>
-          <li id="today-humidity"></li>
-          <li id="today-UV"></li>
-        </ul>
+        <div class= "text-left">
+          <div id="today-temp"></div>
+          <div id="today-wind"></div>
+          <div id="today-humidity"></div>
+          <div>UV Index: <span id="today-UV" class="text-white p-1"></span></div>
+        </div>
           <!-- <h1 id = "typed-city" placeholder="City Name"></h1> 
       I will have a place holder for the city name which will be plugged in
     and on the same line will be the date with moment JS moment().format('l'); 
@@ -63,59 +52,55 @@
         <h2 id = "forecast">5-Day Forecast:</h2>
         <div class="row text-white">
 
-          <div class="col bg-dark m-1">
-            <ul>
-              <li id="0day-date"></li>
-              <li id="0day-icon"></li> 
-              <li id="0day-temp"></li>
-              <li id="0day-wind"></li>
-              <li id="0day-humidity"></li>
+          <div class="col bg-dark m-1 float-left">
+
+              <div id="0day-date"></div>
+              <div id="0day-icon"></div> 
+              <div id="0day-temp"></div>
+              <div id="0day-wind"></div>
+              <div id="0day-humidity"></div>
               
-            </ul>
           </div>
 
           <div class="col bg-dark m-1">
-            <ul>
-              <li id="1day-date"></li>
-              <li id="1day-icon"></li> 
-              <li id="1day-temp"></li>
-              <li id="1day-wind"></li>
-              <li id="1day-humidity"></li>
-              
-            </ul>
+            
+              <div id="1day-date"></div>
+              <div id="1day-icon"></div> 
+              <div id="1day-temp"></div>
+              <div id="1day-wind"></div>
+              <div id="1day-humidity"></div>
+
           </div>
 
           <div class="col bg-dark m-1">
-            <ul>
-              <li id="2day-date"></li>
-              <li id="2day-icon"></li> 
-              <li id="2day-temp"></li>
-              <li id="2day-wind"></li>
-              <li id="2day-humidity"></li>
+            
+              <div id="2day-date"></div>
+              <div id="2day-icon"></div> 
+              <div id="2day-temp"></div>
+              <div id="2day-wind"></div>
+              <div id="2day-humidity"></div>
               
-            </ul>
+            
           </div>
 
           <div class="col bg-dark m-1">
-            <ul>
-              <li id="3day-date"></li>
-              <li id="3day-icon"></li> 
-              <li id="3day-temp"></li>
-              <li id="3day-wind"></li>
-              <li id="3day-humidity"></li>
+            
+              <div id="3day-date"></div>
+              <div id="3day-icon"></div> 
+              <div id="3day-temp"></div>
+              <div id="3day-wind"></div>
+              <div id="3day-humidity"></div>
               
-            </ul>
           </div>
 
           <div class="col bg-dark m-1">
-            <ul>
-              <li id="4day-date"></li>
-              <li id="4day-icon"></li> 
-              <li id="4day-temp"></li>
-              <li id="4day-wind"></li>
-              <li id="4day-humidity"></li>
+            
+              <div id="4day-date"></div>
+              <div id="4day-icon"></div> 
+              <div id="4day-temp"></div>
+              <div id="4day-wind"></div>
+              <div id="4day-humidity"></div>
               
-            </ul>
           </div>
 
       </div>

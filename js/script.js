@@ -112,7 +112,16 @@ function handleCitySearchSubmit(event) {
   document.getElementById("bottom-right").style.visibility = "visible";
 
   var searchInputVal = cityInput.value;
+  var empt = document.forms["form"]["text"].value;
   console.log('city:', searchInputVal);
+
+  if (empt == "")
+  {
+   alert("Please provide a city name");
+   return false;
+  } 
+  else 
+  {
 
   var localstorageSearches = JSON.parse(localStorage.getItem('searchHistory')) || [];
   localstorageSearches.push(searchInputVal)
@@ -121,9 +130,10 @@ function handleCitySearchSubmit(event) {
   displayLocalStorage()
 
   var geocodeQueryUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInputVal},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
+
+  
   // the new api with the typed city
   $.ajax({ url: geocodeQueryUrl })
-
     //then funtion - response is what I'm given from that API
     .then(function (response) {
       // will show the five responses
@@ -144,9 +154,26 @@ function handleCitySearchSubmit(event) {
 
           $('#today-temp').text("Temp:" + " " + response.current.temp + "F");
           $('#today-wind').text("Wind:" + " " + response.current.wind_speed + " " + "MPH");
-          $('#today-humidity').text("Humidity:" + " " + response.current.humidity);
+          $('#today-humidity').text("Humidity:" + " " + response.current.humidity + "%");
           // UV Index: it needs to change color based on the index number
-          $('#today-UV').text("UV Index:" + " " + response.current.uvi);
+          var UVIndex = response.current.uvi
+          $('#today-UV').text(UVIndex);
+          if (UVIndex < 3){
+            $('#today-UV').css('background', '#008000');
+          } 
+            else if (2 < UVIndex < 6) {
+            $('#today-UV').css('background', '#FFFF00');
+            $('#today-UV').css('color', '#333300');
+          }  
+            else if (5 < UVIndex > 8) {
+            $('#today-UV').css('background', '#FFA500');
+          }
+            else if (7 < UVIndex > 11) {
+            $('#today-UV').css('background', '#FF0000');
+          }
+            else if (11 < UVIndex) {
+            $('#today-UV').css('background', '#800080');
+          }
 
           var tomorrow = moment().add(1, 'days');
           $("#0day-date").text(tomorrow.format('l'));
@@ -194,6 +221,7 @@ function handleCitySearchSubmit(event) {
           $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity);
         });
     });
+    }
   }
 
   searchButton.addEventListener('click', handleCitySearchSubmit);
