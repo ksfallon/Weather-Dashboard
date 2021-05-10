@@ -160,20 +160,20 @@ function handleCitySearchSubmit(event) {
           $('#today-UV').text(UVIndex);
           if (UVIndex < 3){
             $('#today-UV').css('background', '#008000');
-          } 
+          }
             else if (2 < UVIndex < 6) {
-            $('#today-UV').css('background', '#FFFF00');
-            $('#today-UV').css('color', '#333300');
-          }  
-            else if (5 < UVIndex > 8) {
-            $('#today-UV').css('background', '#FFA500');
-          }
-            else if (7 < UVIndex > 11) {
-            $('#today-UV').css('background', '#FF0000');
-          }
-            else if (11 < UVIndex) {
-            $('#today-UV').css('background', '#800080');
-          }
+            $('#today-UV').css('background', '#FFFF00', 'color', "#333300");
+            // $('#today-UV').css('color', '#333300');
+            }
+              else if (5 < UVIndex > 8) {
+              $('#today-UV').css('background', '#FFA500');
+              }
+                else if (7 < UVIndex > 11) {
+                $('#today-UV').css('background', '#FF0000');
+                }
+                  if (11 <= UVIndex) {
+                  $('#today-UV').css('background', '#800080');
+                  }       
 
           var tomorrow = moment().add(1, 'days');
           $("#0day-date").text(tomorrow.format('l'));
