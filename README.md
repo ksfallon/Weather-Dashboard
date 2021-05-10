@@ -28,6 +28,8 @@ I used basic CSS to create the Weather Dashboard title and bootstrap in HTML to 
 - And a variable is created again to show the JSON.parse of the local storage - make it into a string from an array.
 - if there is nothing in this variable than it is empty and nothing is done.
 - else, a for loop is created to run through each item (city) of the string and it is prepended as a button with specific parameters with the name of that city searched displayed on the bottom. These are the search history buttons that are created in the bottom-left column. They allow for a quick search of that specific city.
+- here is the webpage with the local Storage displayed as button
+![opening page with local storage](assets\opening-page-w-localStorage.png)
 
 2. Next within the **handleCitySearchSubmit()** the API's are called. The first one is to gather the Latitude and Logitude of the city
 ![city search within weather api](assets\first-API-Search.png)
@@ -47,6 +49,8 @@ I used basic CSS to create the Weather Dashboard title and bootstrap in HTML to 
 4. Five day forcast in **handleCitySearchSubmit()**
 ![5 day forcast](assets\5day-forecast-js.png)
 -the same type of code is used for the 5 day forecast and is done for each day - he property path's needed to gather information about today's temperature, wind and humidity and that information is then added to the html as text in the bottom right website section.
+-Here is the webpage with a search loaded and showing local storage in inspect
+![napoli search](assets\Napoli-with-localStorage.png)
 
 5. Recent City Search buttons
 The code I have for **handleCitySearchSubmit()** is copied almost completely and then placed into the function that is nameless but is initiated with the click of the button's appended to the bottom left portion of the website.
