@@ -13,7 +13,7 @@ function displayLocalStorage() {
     $('#previous-search').empty()
 
     for (let i = 0; i < displayCitySearch.length; i++) {
-      $('#previous-search').append('<button class="pastSearch">' + displayCitySearch[i] + "</button>")
+      $('#previous-search').prepend('<button class="pastSearch w3-btn bbtn-light btn-block mt-3 text-dark">' + displayCitySearch[i] + "</button>")
     }
   }
 }
@@ -117,8 +117,10 @@ function handleCitySearchSubmit(event) {
 
   if (empt == "")
   {
-   alert("Please provide a city name");
-   return false;
+    alert("Please provide a city name");
+    document.getElementById("top-right").style.visibility = "hidden";
+    document.getElementById("bottom-right").style.visibility = "hidden";
+    return false;
   } 
   else 
   {
@@ -165,14 +167,8 @@ function handleCitySearchSubmit(event) {
             $('#today-UV').css('background', '#FFFF00', 'color', "#333300");
             // $('#today-UV').css('color', '#333300');
             }
-              else if (5 < UVIndex > 8) {
-              $('#today-UV').css('background', '#FFA500');
-              }
-                else if (7 < UVIndex > 11) {
-                $('#today-UV').css('background', '#FF0000');
-                }
-                  if (11 <= UVIndex) {
-                  $('#today-UV').css('background', '#800080');
+              else {
+                  $('#today-UV').css('background', '#FF0000');
                   }       
 
           var tomorrow = moment().add(1, 'days');
