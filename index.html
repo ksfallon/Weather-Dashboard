@@ -14,15 +14,15 @@
   <div class="container flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
     <div class="row row-cols-2">
       <div id="top-left" class="col-4">
-        <h1 class="text-body">Search for a City:</h1>
+        <h1 class="text-body font-weight-bold">Search for a City:</h1>
 
         <form id="search-form" name="form" class="mb-2">
 
           <input id="search-input" name="text" class="form-input w-100 mt-2 mb-2" type="text" placeholder="San Diego">
-          <button id="search-button" class="btn btn-primary btn-block mt-2 mb-2">Search</button>
+          <button id="search-button" class="btn btn-primary btn-block mt-2 mb-3">Search</button>
 
         </form>
-        <!-- need to create a break line here to separate from previous search buttons -->
+
       </div>
 
       <div id="top-right" class="col-8 border border-dark">
@@ -34,14 +34,7 @@
           <div id="today-humidity"></div>
           <div>UV Index: <span id="today-UV" class="text-white p-1"></span></div>
         </div>
-          <!-- <h1 id = "typed-city" placeholder="City Name"></h1> 
-      I will have a place holder for the city name which will be plugged in
-    and on the same line will be the date with moment JS moment().format('l'); 
-    place for:
-    Temp: pull correct data from local storage
-    Wind: 
-    Humidity: 
-    UV Index:-->
+
       </div>
 
       <div id="bottom-left" class="col-4">

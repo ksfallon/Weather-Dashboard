@@ -26,6 +26,10 @@ body {
   visibility: hidden;
 }
 
+#bottom-left {
+  border-top: 3px solid rgb(73, 72, 72);
+}
+
 #bottom-right {
   visibility: hidden;
 }
