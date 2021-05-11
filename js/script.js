@@ -2,7 +2,7 @@
 var searchFormE1 = document.querySelector('#search-form');
 var searchButton = document.querySelector('#search-button');
 var cityInput = document.querySelector('#search-input');
-var pastCitiesbtn = $('.pastSearch')
+var pastCitiesbtn = $('#previous-search')
 
 var searchHistory = []
 
@@ -129,6 +129,10 @@ function displayLocalStorage() {
 
     for (let i = 0; i < displayCitySearch.length; i++) {
       $('#previous-search').prepend('<button class="pastSearch w3-btn bbtn-light btn-block mt-3 text-dark">' + displayCitySearch[i] + "</button>")
+      callCity = document.createElement("div")
+      callCity.textContent = displayCitySearch[i];
+      callCity.classList = "invisible"
+      callCity.setAttribute('city-name', displayCitySearch[i]);
     }
   }
 }
@@ -136,11 +140,12 @@ function displayLocalStorage() {
 $(document).on('click', '.pastSearch', function(event) {
   event.preventDefault();
   console.log('clicked past search button');
-  console.log('name is array', JSON.parse(localStorage.getItem('searchHistory')))
+  var cityName = callCity.target.getAttribute('city-name')
+  console.log("city-name: ", cityName);
   
   // var needToFigureOut = the name of the city on the button from localStorage
 
-  var geocodeQueryUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${needToFigureOut},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
+  var geocodeQueryUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
   // the new api with the typed city
   $.ajax({ url: geocodeQueryUrl })
   
