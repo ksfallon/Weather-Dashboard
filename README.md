@@ -1,4 +1,7 @@
 # Weather-Dashboard
+
+https://ksfallon.github.io/Weather-Dashboard/
+
 Our assignment is to create a weather Dashboard that uses Open Weather Map APIs to provide a search input for a city, displays the current weather along with that city's five day forecast, displays a color coded UV index for current day weather and finally provides buttons of previous searches for a quick search of the city.
 *My code is not as DRY as I would like - and at the end of the READMe I explain why it isn't and how I will update my code to be more streamline and DRY.
 

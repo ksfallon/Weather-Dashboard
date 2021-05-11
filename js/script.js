@@ -33,7 +33,7 @@ function handleCitySearchSubmit(event) {
 
   var geocodeQueryUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInputVal},&limit=5&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
 
-  // the new api with the typed city
+  // the new api with the typed city name
   $.ajax({ url: geocodeQueryUrl })
     //then funtion - response is what I'm given from that API
     .then(function (response) {
@@ -41,15 +41,18 @@ function handleCitySearchSubmit(event) {
       console.log('response:', response);
       //will put the city name in the top right container
       $('#city-name').text(response[0].name);
+      //momentjs to give today's date
       var today = moment();
       $("#today-date").text("(" + today.format('l') + ")");
-      var cityToSearch = response[0];
 
+      // will always go with the first city the .then function fetches which is response[0]
+      var cityToSearch = response[0];
+      // the new variable is plugged in with the keys for Lat and Lon, because frmm those values we get the weather forecast
       var oneCallWeatherApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityToSearch.lat}&lon=${cityToSearch.lon}&appid=af8f9e641174c07751bae2f5bbbc3fb5&units=imperial`;
       $.ajax({ url: oneCallWeatherApi })
 
         .then(function (response) {
-          console.log('WEATHER DATA!:', response);
+    
           var iconCodeToday = response.current.weather[0].icon
           var iconUrlToday = `https://openweathermap.org/img/w/${iconCodeToday}.png`
           $('#weather-icon').html(`<img src="${iconUrlToday}" />`);
@@ -76,7 +79,7 @@ function handleCitySearchSubmit(event) {
           $('#0day-icon').html(`<img src="${iconUrl0}" />`);
           $('#0day-temp').text("Temp:" + " " + response.daily[0].temp.day + "F");
           $('#0day-wind').text("Wind:" + " " + response.daily[0].wind_speed + " " + "MPH");
-          $('#0day-humidity').text("Humidity:" + " " + response.daily[0].humidity);
+          $('#0day-humidity').text("Humidity:" + " " + response.daily[0].humidity) + "%";
 
           var twoDaysOut = moment().add(2, 'days');
           $("#1day-date").text(twoDaysOut.format('l'));
@@ -85,7 +88,7 @@ function handleCitySearchSubmit(event) {
           $('#1day-icon').html(`<img src="${iconUrl1}" />`);
           $('#1day-temp').text("Temp:" + " " + response.daily[1].temp.day + "F");
           $('#1day-wind').text("Wind:" + " " + response.daily[1].wind_speed + " " + "MPH");
-          $('#1day-humidity').text("Humidity:" + " " + response.daily[1].humidity);
+          $('#1day-humidity').text("Humidity:" + " " + response.daily[1].humidity + "%");
 
           var threeDaysOut = moment().add(3, 'days');
           $("#2day-date").text(threeDaysOut.format('l'));
@@ -94,7 +97,7 @@ function handleCitySearchSubmit(event) {
           $('#2day-icon').html(`<img src="${iconUrl2}" />`);
           $('#2day-temp').text("Temp:" + " " + response.daily[2].temp.day + "F");
           $('#2day-wind').text("Wind:" + " " + response.daily[2].wind_speed + " " + "MPH");
-          $('#2day-humidity').text("Humidity:" + " " + response.daily[2].humidity);
+          $('#2day-humidity').text("Humidity:" + " " + response.daily[2].humidity + "%");
 
           var fourDaysOut = moment().add(3, 'days');
           $("#3day-date").text(fourDaysOut.format('l'));
@@ -103,7 +106,7 @@ function handleCitySearchSubmit(event) {
           $('#3day-icon').html(`<img src="${iconUrl3}" />`);
           $('#3day-temp').text("Temp:" + " " + response.daily[3].temp.day + "F");
           $('#3day-wind').text("Wind:" + " " + response.daily[3].wind_speed + " " + "MPH");
-          $('#3day-humidity').text("Humidity:" + " " + response.daily[3].humidity);
+          $('#3day-humidity').text("Humidity:" + " " + response.daily[3].humidity + "%");
 
           var fiveDaysOut = moment().add(4, 'days');
           $("#4day-date").text(fiveDaysOut.format('l'));
@@ -112,7 +115,7 @@ function handleCitySearchSubmit(event) {
           $('#4day-icon').html(`<img src="${iconUrl4}" />`);
           $('#4day-temp').text("Temp:" + " " + response.daily[4].temp.day + "F");
           $('#4day-wind').text("Wind:" + " " + response.daily[4].wind_speed + " " + "MPH");
-          $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity);
+          $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity + "%");
         });
     });
     }
@@ -129,6 +132,8 @@ function displayLocalStorage() {
 
     for (let i = 0; i < displayCitySearch.length; i++) {
       $('#previous-search').prepend('<button class="pastSearch w3-btn bbtn-light btn-block mt-3 text-dark">' + displayCitySearch[i] + "</button>")
+
+      // **need to figure out how to call on the textContent of the button in order to run the current and 5 day forecasts for that specific city referenced on each button
       callCity = document.createElement("div")
       callCity.textContent = displayCitySearch[i];
       callCity.classList = "invisible"
@@ -169,7 +174,7 @@ $(document).on('click', '.pastSearch', function(event) {
 
           $('#today-temp').text("Temp:" + " " + response.current.temp + "F");
           $('#today-wind').text("Wind:" + " " + response.current.wind_speed + " " + "MPH");
-          $('#today-humidity').text("Humidity:" + " " + response.current.humidity);
+          $('#today-humidity').text("Humidity:" + " " + response.current.humidity + "%");
           // UV Index: it needs to change color based on the index number
           $('#today-UV').text("UV Index:" + " " + response.current.uvi);
 
@@ -180,7 +185,7 @@ $(document).on('click', '.pastSearch', function(event) {
           $('#0day-icon').html(`<img src="${iconUrl0}" />`);
           $('#0day-temp').text("Temp:" + " " + response.daily[0].temp.day + "F");
           $('#0day-wind').text("Wind:" + " " + response.daily[0].wind_speed + " " + "MPH");
-          $('#0day-humidity').text("Humidity:" + " " + response.daily[0].humidity);
+          $('#0day-humidity').text("Humidity:" + " " + response.daily[0].humidity + "%");
 
           var twoDaysOut = moment().add(2, 'days');
           $("#1day-date").text(twoDaysOut.format('l'));
@@ -189,7 +194,7 @@ $(document).on('click', '.pastSearch', function(event) {
           $('#1day-icon').html(`<img src="${iconUrl1}" />`);
           $('#1day-temp').text("Temp:" + " " + response.daily[1].temp.day + "F");
           $('#1day-wind').text("Wind:" + " " + response.daily[1].wind_speed + " " + "MPH");
-          $('#1day-humidity').text("Humidity:" + " " + response.daily[1].humidity);
+          $('#1day-humidity').text("Humidity:" + " " + response.daily[1].humidity + "%");
 
           var threeDaysOut = moment().add(3, 'days');
           $("#2day-date").text(threeDaysOut.format('l'));
@@ -198,7 +203,7 @@ $(document).on('click', '.pastSearch', function(event) {
           $('#2day-icon').html(`<img src="${iconUrl2}" />`);
           $('#2day-temp').text("Temp:" + " " + response.daily[2].temp.day + "F");
           $('#2day-wind').text("Wind:" + " " + response.daily[2].wind_speed + " " + "MPH");
-          $('#2day-humidity').text("Humidity:" + " " + response.daily[2].humidity);
+          $('#2day-humidity').text("Humidity:" + " " + response.daily[2].humidity + "%");
 
           var fourDaysOut = moment().add(3, 'days');
           $("#3day-date").text(fourDaysOut.format('l'));
@@ -207,7 +212,7 @@ $(document).on('click', '.pastSearch', function(event) {
           $('#3day-icon').html(`<img src="${iconUrl3}" />`);
           $('#3day-temp').text("Temp:" + " " + response.daily[3].temp.day + "F");
           $('#3day-wind').text("Wind:" + " " + response.daily[3].wind_speed + " " + "MPH");
-          $('#3day-humidity').text("Humidity:" + " " + response.daily[3].humidity);
+          $('#3day-humidity').text("Humidity:" + " " + response.daily[3].humidity + "%");
 
           var fiveDaysOut = moment().add(4, 'days');
           $("#4day-date").text(fiveDaysOut.format('l'));
@@ -216,7 +221,7 @@ $(document).on('click', '.pastSearch', function(event) {
           $('#4day-icon').html(`<img src="${iconUrl4}" />`);
           $('#4day-temp').text("Temp:" + " " + response.daily[4].temp.day + "F");
           $('#4day-wind').text("Wind:" + " " + response.daily[4].wind_speed + " " + "MPH");
-          $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity);
+          $('#4day-humidity').text("Humidity:" + " " + response.daily[4].humidity + "%");
         });
     });
   
