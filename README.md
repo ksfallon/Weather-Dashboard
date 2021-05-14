@@ -7,6 +7,8 @@ Our assignment is to create a weather Dashboard that uses Open Weather Map APIs 
 
 ## Opening Page with an empty Local Storage.
 ![Empty Local Storage Home Page](assets\no-localStorage-opening-page.png)
+![alt text](https://github.com/ksfallon/Weather-Dashboard/blob/main/assets/no-localStorage-opening-page.png)
+
 Here is the webpage when it is first opened and the local storage is cleared.
 ** I have the five day forcast and current day HTML columns as visibility:hidden in the CSS, and when the search button is clicked, the event listener starts the function **handleCitySearchSubmit()** is told to display and below the main blue *Search* button a new search button is added displaying the recent city that was searched (this is pulled from local storage and will be explained later.)
 
