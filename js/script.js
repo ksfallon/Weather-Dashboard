@@ -4,6 +4,7 @@ var searchButton = document.querySelector('#search-button');
 var cityInput = document.querySelector('#search-input');
 var pastCitiesbtn = $('#previous-search')
 
+console.log('IS THIS THE ID', cityInput)
 var searchHistory = []
 
 function handleCitySearchSubmit(event) {

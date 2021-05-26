@@ -68,3 +68,6 @@ I am still working on getting these buttons to function properly
 My code isn't as DRY as I would like it to be, but if I had more time (or maybe later on) I would create global variables for the forecast items - Date, Temperature, Humidity and Wind - that are found in the current and the five day forecast. Then I could create a straightforward function with a for loop that would run through the weather API and provide information for every day that way. I would probably need separate for loops - one for Today's weather and another for the 5 Day forecast.
 Then I could just call on these for loops from the Recent City Search button mentioned in part 5.
 But by writing out the then function with the API response for each day I was better able to drill into my head how the API works using the then function.
+
+---
+Licensed under the [MIT License](https://choosealicense.com/licenses/mit/#).
